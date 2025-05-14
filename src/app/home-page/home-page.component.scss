@@ -1,0 +1,94 @@
+@use "sass:color";
+
+$blue-dark: #1d3557;
+$blue-medium: #457b9d;
+$blue-light: #a8dadc;
+$yellow-accent: #FDBF2D;
+$yellow-hover: color.adjust($yellow-accent, $lightness: -10%);
+
+.homepage {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(to bottom right, $blue-dark, $blue-medium, $blue-light);
+  color: white;
+  font-family: 'Segoe UI', sans-serif;
+
+  .navbar {
+    background-color: $blue-dark;
+    padding: 1rem 2rem;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: $yellow-accent;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+
+      a {
+        text-decoration: none;
+        color: white;
+        font-weight: 500;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: $yellow-accent;
+        }
+      }
+    }
+  }
+
+  .hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 80vh;
+
+    .hero-content {
+      max-width: 600px;
+
+      h2 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+      }
+
+      p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+      }
+
+      .cta-button {
+        background: $yellow-accent;
+        border: none;
+        margin: 0.5em;
+        color: $blue-dark;
+        padding: 0.75rem 2rem;
+        border-radius: 8px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: 0.3s;
+        width: fit-content;
+
+        &:hover {
+          background: $yellow-hover;
+        }
+      }
+    }
+  }
+}
+
+.display-buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

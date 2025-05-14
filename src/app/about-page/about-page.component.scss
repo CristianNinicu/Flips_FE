@@ -1,0 +1,94 @@
+@use "sass:color";
+
+$blue-dark: #1d3557;
+$blue-medium: #457b9d;
+$blue-light: #a8dadc;
+$yellow-accent: #FDBF2D;
+$yellow-hover: color.adjust($yellow-accent, $lightness: -10%);
+
+.about-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(to bottom right, $blue-dark, $blue-medium, $blue-light);
+  font-family: 'Segoe UI', sans-serif;
+  color: white;
+
+  .navbar {
+    background-color: $blue-dark;
+    padding: 1rem 2rem;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    overflow-y: auto;
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: $yellow-accent;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+
+      a {
+        text-decoration: none;
+        color: white;
+        font-weight: 500;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: $yellow-accent;
+        }
+      }
+    }
+  }
+
+  .content {
+    padding: 3rem 2rem;
+    flex: 1;
+
+    .about-hero {
+      text-align: center;
+      margin-bottom: 3rem;
+
+      h1 {
+        font-size: 3rem;
+        color: $yellow-accent;
+      }
+
+      p {
+        font-size: 1.2rem;
+        max-width: 700px;
+        margin: 0 auto;
+      }
+    }
+
+    .about-content {
+      max-width: 800px;
+      margin: 0 auto;
+
+      h2 {
+        margin-top: 2rem;
+        color: $yellow-accent;
+      }
+
+      ul {
+        list-style: square;
+        padding-left: 1.5rem;
+
+        li {
+          margin-bottom: 0.5rem;
+        }
+      }
+
+      p {
+        margin-top: 1rem;
+        line-height: 1.6;
+      }
+    }
+  }
+}
