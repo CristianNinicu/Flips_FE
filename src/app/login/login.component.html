@@ -1,0 +1,34 @@
+<div class="login-container">
+  <div class="gradient-side"></div>
+  <div class="form-side">
+    <div class="login-form-wrapper">
+      <div >
+        <img src="assets/images/logo.png" alt="Flips">
+      </div>
+      <form [formGroup]="loginForm" (ngSubmit)="submit($event)">
+        <mat-form-field appearance="outline" class="full-width inputs">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email">
+          <mat-error *ngIf="loginForm.controls['email'].hasError('required')">
+            This field is required
+          </mat-error>
+          <mat-error *ngIf="loginForm.controls['email'].hasError('email')">
+            This is not a valid email
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width inputs">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" formControlName="password"/>
+          <mat-error *ngIf="loginForm.controls['password'].hasError('required')">
+            This field is required
+          </mat-error>
+        </mat-form-field>
+
+        <button mat-button color="primary" style="outline-color: whitesmoke" type="submit" (click)="onControlClick('Login')" [disabled]="saving">
+          {{ saving ? 'Logging in...' : 'Log In' }}
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
