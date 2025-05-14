@@ -1,0 +1,39 @@
+<div class="card-manager">
+ <div class="navbar">
+    <h1 class="logo">flips</h1>
+    <div class="nav-links">
+      <a routerLink="/home" (click)="onControlClick('Home')">Home</a>
+      <a routerLink="/about" (click)="onControlClick('About')">About</a>
+    </div>
+  </div>
+  <h2>Manage Your Cards</h2>
+
+  <form class="card-form" (submit)="addCard(); $event.preventDefault()">
+    <input type="text" (click)="onControlClick('Enter question in the card')" [(ngModel)]="newQuestion" name="question" placeholder="Enter question" required />
+    <input type="text" (click)="onControlClick('Enter answer in the card')" [(ngModel)]="newAnswer" name="answer" placeholder="Enter answer" required />
+    <button type="submit" (click)="onControlClick('Add Card')">Add Card</button>
+  </form>
+
+  <div class="card-section">
+    <div class="card-list">
+      <div *ngFor="let card of cards" class="card-item" >
+        <ng-container *ngIf="editingCard?.id !== card.id; else editForm">
+          <p><strong>Q:</strong> {{ card.question }}</p>
+          <p><strong>A:</strong> {{ card.answer }}</p>
+          <button (click)="editCard(card); onControlClick('Edit card')">Edit</button>
+          <button (click)="deleteCard(card.id); onControlClick('Delete card')">Delete</button>
+        </ng-container>
+
+        <ng-template #editForm>
+          <ng-container *ngIf="editingCard">
+            <input [(ngModel)]="editingCard!.question" (click)="onControlClick('Modify a question')"/>
+            <input [(ngModel)]="editingCard!.answer" (click)="onControlClick('Modify the answer')"/>
+            <button (click)="saveEdit(); onControlClick('Save')">Save</button>
+            <button (click)="cancelEdit(); onControlClick('Cancel')">Cancel</button>
+          </ng-container>
+        </ng-template>
+      </div>
+    </div>
+    <button (click)="saveAllCards()" class="save-all-button" *ngIf="cards.length > 0">Save All Cards</button>
+  </div>
+</div>

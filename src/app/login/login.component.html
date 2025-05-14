@@ -2,11 +2,11 @@
   <div class="gradient-side"></div>
   <div class="form-side">
     <div class="login-form-wrapper">
-      <div >
+      <div>
         <img src="assets/images/logo.png" alt="Flips">
       </div>
       <form [formGroup]="loginForm" (ngSubmit)="submit($event)">
-        <mat-form-field appearance="outline" class="full-width inputs">
+        <mat-form-field appearance="outline" class="full-width">
           <mat-label>Email</mat-label>
           <input matInput formControlName="email">
           <mat-error *ngIf="loginForm.controls['email'].hasError('required')">
@@ -17,7 +17,7 @@
           </mat-error>
         </mat-form-field>
 
-        <mat-form-field appearance="outline" class="full-width inputs">
+        <mat-form-field appearance="outline" class="full-width">
           <mat-label>Password</mat-label>
           <input matInput type="password" formControlName="password"/>
           <mat-error *ngIf="loginForm.controls['password'].hasError('required')">

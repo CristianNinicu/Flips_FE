@@ -40,7 +40,7 @@ $yellow-hover: color.adjust($yellow-accent, $lightness: -10%);
         transition: color 0.3s ease;
 
         &:hover {
-          color: $yellow-accent;
+          color: $yellow-hover;
         }
       }
     }

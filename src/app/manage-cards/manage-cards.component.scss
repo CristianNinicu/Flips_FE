@@ -1,0 +1,154 @@
+@use "sass:color";
+$blue-dark: #1d3557;
+$blue-medium: #457b9d;
+$blue-light: #a8dadc;
+$yellow-accent: #FDBF2D;
+
+$yellow-hover: color.adjust($yellow-accent, $lightness: -10%);
+
+.card-manager {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(to bottom right, $blue-dark, $blue-medium, $blue-light);
+  color: white;
+  font-family: 'Segoe UI', sans-serif;
+  background-attachment: fixed;
+
+  .navbar {
+    background-color: $blue-dark;
+    padding: 1rem 2rem;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: $yellow-accent;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+
+      a {
+        text-decoration: none;
+        color: white;
+        font-weight: 500;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: $yellow-hover;
+        }
+      }
+    }
+  }
+
+  h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: $yellow-accent;
+  }
+
+  .card-form {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 2rem;
+
+    input {
+      padding: 0.75rem;
+      border-radius: 8px;
+      border: none;
+      width: 200px;
+    }
+
+    button {
+      background-color: $yellow-accent;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      color: $blue-dark;
+      transition: background 0.3s ease;
+
+      &:hover {
+        background: $yellow-hover;
+      }
+    }
+  }
+
+  .card-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+
+    .card-item {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(8px);
+      border-radius: 12px;
+      padding: 1rem 2rem;
+      width: 100%;
+      max-width: 500px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+
+      p {
+        margin: 0.5rem 0;
+      }
+
+      input {
+        width: 100%;
+        margin: 0.5rem 0;
+        padding: 0.5rem;
+        border-radius: 6px;
+        border: none;
+      }
+
+      button {
+        margin-right: 0.5rem;
+        margin-top: 0.5rem;
+        background-color: $yellow-accent;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 6px;
+        font-weight: bold;
+        color: $blue-dark;
+
+        &:hover {
+          background: $yellow-hover;
+        }
+      }
+    }
+  }
+  .save-all-button {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    background-color: $yellow-accent;
+    color: $blue-dark;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    al
+
+    &:hover {
+      background-color: color.adjust($yellow-accent, $lightness: -10%);
+    }
+  }
+}
+.card-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}

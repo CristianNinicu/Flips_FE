@@ -6,6 +6,7 @@ import {AppRoutingModule, routes} from './app.routes';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import {RouterModule} from '@angular/router';
+import {CardManagerComponent} from './manage-cards/manage-cards.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import {RouterModule} from '@angular/router';
     RouterModule.forRoot(routes),
     AppRoutingModule,
     LoginComponent,
-    AppComponent
+    AppComponent,
+    CardManagerComponent
   ],
   providers: [],
 })
