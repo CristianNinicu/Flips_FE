@@ -6,7 +6,8 @@ import {AppRoutingModule, routes} from './app.routes';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import {RouterModule} from '@angular/router';
-import {CardManagerComponent} from './manage-cards/manage-cards.component';
+import {ManageCardsComponent} from './manage-cards/manage-cards.component';
+import {QuizComponent} from './quiz-page/quiz-page.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {CardManagerComponent} from './manage-cards/manage-cards.component';
     AppRoutingModule,
     LoginComponent,
     AppComponent,
-    CardManagerComponent
+    ManageCardsComponent,
+    QuizComponent
   ],
   providers: [],
 })

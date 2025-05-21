@@ -1,19 +1,24 @@
 <div class="homepage">
-  <nav class="navbar">
-    <h1 class="logo">flips</h1>
-    <div class="nav-links">
-      <a (click)="onControlClick('Home')">Home</a>
-      <a routerLink="/about" (click)="onControlClick('About')">About</a>
-    </div>
-  </nav>
-
   <section class="hero">
     <div class="hero-content">
       <h2>Learn Smarter with Flips</h2>
-      <p>Interactive card-based learning designed to help you master any topic, anywhere.</p>
-      <div class="display-buttons">
-        <button class="cta-button" routerLink="/manage-cards" (click)="onControlClick('Manage')">Manage cards</button>
-        <button class="cta-button"  (click)="onControlClick('Quiz')">Quiz</button>
+      <p class="tagline">Interactive card-based learning designed to help you master any topic, anywhere.</p>
+
+      <div class="features">
+        <div class="feature-card">
+          <h3>Create & Organize</h3>
+          <p>Build custom flashcards with rich text formatting and multimedia support.</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>Smart Quizzing</h3>
+          <p>Adaptive learning system with spaced repetition and progress tracking.</p>
+        </div>
+      </div>
+
+      <div class="cta-section">
+        <button class="cta-button" routerLink="/manage-cards" (click)="onControlClick('Manage cards')">Manage Cards</button>
+        <button class="cta-button" routerLink="/quiz" (click)="onControlClick('Quiz')">Quiz</button>
       </div>
     </div>
   </section>

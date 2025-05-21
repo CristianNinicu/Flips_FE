@@ -1,56 +1,22 @@
-@use "sass:color";
-$blue-dark: #1d3557;
-$blue-medium: #457b9d;
-$blue-light: #a8dadc;
-$yellow-accent: #FDBF2D;
-
-$yellow-hover: color.adjust($yellow-accent, $lightness: -10%);
-
 .card-manager {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(to bottom right, $blue-dark, $blue-medium, $blue-light);
-  color: white;
+  background: linear-gradient(
+      to bottom right,
+      var(--blue-dark),
+      var(--blue-medium),
+      var(--blue-light)
+  );
+  color: var(--text-color);
   font-family: 'Segoe UI', sans-serif;
   background-attachment: fixed;
-
-  .navbar {
-    background-color: $blue-dark;
-    padding: 1rem 2rem;
-    height: 70px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-
-    .logo {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: $yellow-accent;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 1.5rem;
-
-      a {
-        text-decoration: none;
-        color: white;
-        font-weight: 500;
-        transition: color 0.3s ease;
-
-        &:hover {
-          color: $yellow-hover;
-        }
-      }
-    }
-  }
+  transition: all 0.3s ease;
 
   h2 {
     text-align: center;
     margin-bottom: 2rem;
-    color: $yellow-accent;
+    color: var(--yellow-accent);
   }
 
   .card-form {
@@ -65,20 +31,22 @@ $yellow-hover: color.adjust($yellow-accent, $lightness: -10%);
       border-radius: 8px;
       border: none;
       width: 200px;
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--text-color);
     }
 
     button {
-      background-color: $yellow-accent;
+      background-color: var(--yellow-accent);
       border: none;
       padding: 0.75rem 1.5rem;
       border-radius: 8px;
       font-weight: bold;
       cursor: pointer;
-      color: $blue-dark;
-      transition: background 0.3s ease;
+      color: var(--blue-dark);
+      transition: all 0.3s ease;
 
       &:hover {
-        background: $yellow-hover;
+        background: var(--yellow-hover);
       }
     }
   }
@@ -90,16 +58,18 @@ $yellow-hover: color.adjust($yellow-accent, $lightness: -10%);
     align-items: center;
 
     .card-item {
-      background: rgba(255, 255, 255, 0.15);
+      background: rgba(var(--blue-light-rgb), 0.15);
       backdrop-filter: blur(8px);
       border-radius: 12px;
       padding: 1rem 2rem;
       width: 100%;
       max-width: 500px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--blue-medium);
 
       p {
         margin: 0.5rem 0;
+        color: var(--text-color);
       }
 
       input {
@@ -107,25 +77,29 @@ $yellow-hover: color.adjust($yellow-accent, $lightness: -10%);
         margin: 0.5rem 0;
         padding: 0.5rem;
         border-radius: 6px;
-        border: none;
+        border: 1px solid var(--blue-medium);
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--text-color);
       }
 
       button {
         margin-right: 0.5rem;
         margin-top: 0.5rem;
-        background-color: $yellow-accent;
+        background-color: var(--yellow-accent);
         border: none;
         padding: 0.5rem 1rem;
         border-radius: 6px;
         font-weight: bold;
-        color: $blue-dark;
+        color: var(--blue-dark);
+        transition: all 0.3s ease;
 
         &:hover {
-          background: $yellow-hover;
+          background: var(--yellow-hover);
         }
       }
     }
   }
+
   .save-all-button {
     margin-top: 2rem;
     margin-bottom: 2rem;
@@ -133,18 +107,19 @@ $yellow-hover: color.adjust($yellow-accent, $lightness: -10%);
     font-size: 1rem;
     border: none;
     border-radius: 8px;
-    background-color: $yellow-accent;
-    color: $blue-dark;
+    background-color: var(--yellow-accent);
+    color: var(--blue-dark);
     font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    al
+    transition: all 0.3s ease;
+    align-self: center;
 
     &:hover {
-      background-color: color.adjust($yellow-accent, $lightness: -10%);
+      background-color: var(--yellow-hover);
     }
   }
 }
+
 .card-section {
   display: flex;
   flex-direction: column;

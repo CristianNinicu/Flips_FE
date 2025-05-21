@@ -1,11 +1,4 @@
 <div class="card-manager">
- <div class="navbar">
-    <h1 class="logo">flips</h1>
-    <div class="nav-links">
-      <a routerLink="/home" (click)="onControlClick('Home')">Home</a>
-      <a routerLink="/about" (click)="onControlClick('About')">About</a>
-    </div>
-  </div>
   <h2>Manage Your Cards</h2>
 
   <form class="card-form" (submit)="addCard(); $event.preventDefault()">
@@ -34,6 +27,6 @@
         </ng-template>
       </div>
     </div>
-    <button (click)="saveAllCards()" class="save-all-button" *ngIf="cards.length > 0">Save All Cards</button>
+    <button (click)="saveAllCards(); onControlClick('Save cards')" class="save-all-button" *ngIf="cards.length > 0">Save All Cards</button>
   </div>
 </div>

@@ -1,94 +1,91 @@
-@use "sass:color";
-
-$blue-dark: #1d3557;
-$blue-medium: #457b9d;
-$blue-light: #a8dadc;
-$yellow-accent: #FDBF2D;
-$yellow-hover: color.adjust($yellow-accent, $lightness: -10%);
-
+// home.component.scss
 .homepage {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  background: linear-gradient(to bottom right, $blue-dark, $blue-medium, $blue-light);
-  color: white;
-  font-family: 'Segoe UI', sans-serif;
-
-  .navbar {
-    background-color: $blue-dark;
-    padding: 1rem 2rem;
-    height: 70px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-
-    .logo {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: $yellow-accent;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 1.5rem;
-
-      a {
-        text-decoration: none;
-        color: white;
-        font-weight: 500;
-        transition: color 0.3s ease;
-
-        &:hover {
-          color: $yellow-hover;
-        }
-      }
-    }
-  }
+  align-items: center;
+  padding: 2rem;
+  background: linear-gradient(
+      to bottom right,
+      var(--blue-dark),
+      var(--blue-medium),
+      var(--blue-light)
+  );
+  color: var(--text-color);
 
   .hero {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    height: 80vh;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
 
     .hero-content {
-      max-width: 600px;
+      text-align: center;
 
       h2 {
-        font-size: 3rem;
-        margin-bottom: 1rem;
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+        color: var(--yellow-accent);
       }
 
-      p {
+      .tagline {
         font-size: 1.2rem;
-        margin-bottom: 2rem;
+        margin-bottom: 3rem;
+        opacity: 0.9;
       }
 
-      .cta-button {
-        background: $yellow-accent;
-        border: none;
-        margin: 0.5em;
-        color: $blue-dark;
-        padding: 0.75rem 2rem;
-        border-radius: 8px;
-        font-size: 1rem;
-        cursor: pointer;
-        transition: 0.3s;
-        width: fit-content;
+      .features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-bottom: 3rem;
 
-        &:hover {
-          background: $yellow-hover;
+        .feature-card {
+          background: rgba(255, 255, 255, 0.1);
+          padding: 2rem;
+          border-radius: 12px;
+          backdrop-filter: blur(8px);
+
+          h3 {
+            color: var(--yellow-accent);
+            margin-bottom: 1rem;
+          }
+
+          p {
+            line-height: 1.6;
+          }
+        }
+      }
+
+      .cta-section {
+        display: flex;
+        gap: 1.5rem;
+        justify-content: center;
+
+        .cta-button {
+          background: var(--yellow-accent);
+          color: var(--blue-dark);
+          padding: 1rem 2.5rem;
+          border: none;
+          border-radius: 8px;
+          font-size: 1.1rem;
+          cursor: pointer;
+          transition: all 0.3s ease;
+
+          &.outline {
+            background: transparent;
+            color: var(--yellow-accent);
+            border: 2px solid var(--yellow-accent);
+
+            &:hover {
+              background: rgba(255, 255, 255, 0.1);
+            }
+          }
+
+          &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+          }
         }
       }
     }
   }
-}
-
-.display-buttons {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }

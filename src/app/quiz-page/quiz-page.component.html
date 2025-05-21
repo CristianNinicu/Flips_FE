@@ -1,0 +1,27 @@
+<div class="quiz-container">
+  <h2>Quiz Time</h2>
+
+  <div *ngIf="!quizStarted" class="start-screen">
+    <button (click)="startQuiz(); onControlClick('Start quiz')">Start Quiz</button>
+  </div>
+
+  <div *ngIf="quizStarted && currentCard" class="question-box">
+    <p><strong>Q:</strong> {{ currentCard.question }}</p>
+
+    <input type="text" [(ngModel)]="userAnswer" placeholder="Type your answer..." />
+    <button (click)="checkAnswer(); onControlClick('Submit answer')">Submit</button>
+
+    <div *ngIf="showResult">
+      <p [ngClass]="{'correct': isCorrect, 'wrong': !isCorrect}">
+        {{ isCorrect ? 'Correct!' : 'Wrong! The answer is: ' + currentCard.answer }}
+      </p>
+      <button (click)="nextQuestion(); onControlClick('Next question')">Next</button>
+    </div>
+  </div>
+
+  <div *ngIf="quizEnded" class="end-screen">
+    <h3>Quiz Completed!</h3>
+    <p>Your score: {{ score }}/{{ cards.length }}</p>
+    <button (click)="restartQuiz(); onControlClick('Restart the quiz')">Restart</button>
+  </div>
+</div>
