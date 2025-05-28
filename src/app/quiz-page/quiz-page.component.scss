@@ -3,7 +3,7 @@
   padding: 2rem;
   background: linear-gradient(to bottom right, var(--blue-dark), var(--blue-medium), var(--blue-light));
   color: var(--text-color);
-  font-family: 'Segoe UI', sans-serif;
+  font-family: var(--primary-font);
 
   h2 {
     text-align: center;

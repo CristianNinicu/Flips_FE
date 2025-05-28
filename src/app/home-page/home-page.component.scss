@@ -4,12 +4,8 @@
   display: flex;
   align-items: center;
   padding: 2rem;
-  background: linear-gradient(
-      to bottom right,
-      var(--blue-dark),
-      var(--blue-medium),
-      var(--blue-light)
-  );
+  background: var(--gradient-bg);
+  font-family: var(--primary-font);
   color: var(--text-color);
 
   .hero {

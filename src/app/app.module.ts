@@ -8,6 +8,8 @@ import { LoginComponent } from './login/login.component';
 import {RouterModule} from '@angular/router';
 import {ManageCardsComponent} from './manage-cards/manage-cards.component';
 import {QuizComponent} from './quiz-page/quiz-page.component';
+import {ThemeService} from './theme.service';
+import {FontFamilyService} from './font-family.service';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,9 @@ import {QuizComponent} from './quiz-page/quiz-page.component';
     ManageCardsComponent,
     QuizComponent
   ],
-  providers: [],
+  providers: [
+    ThemeService,
+    FontFamilyService
+  ],
 })
 export class AppModule {}

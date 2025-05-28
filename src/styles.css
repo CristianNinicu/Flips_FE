@@ -5,73 +5,78 @@ html, body {
   width: 100%;
   overflow: hidden;
   overflow-y: auto;
-
 }
 
 body {
   transition: background 0.3s ease, color 0.3s ease;
-
-  &.default-theme {
-    --blue-dark: #1d3557;
-    --blue-medium: #457b9d;
-    --blue-light: #a8dadc;
-    --yellow-accent: #FDBF2D;
-    --yellow-hover: #e0a800;
-    --text-color: white;
-    --bg-color: var(--blue-dark);
-  }
-
-  &.colorblind-theme {
-    --blue-dark: #333333;
-    --blue-medium: #666666;
-    --blue-light: #999999;
-    --yellow-accent: #ff9900;
-    --yellow-hover: #cc7a00;
-    --text-color: #000;
-    --bg-color: #f3f3f3;
-
-    .homepage {
-      background: linear-gradient(
-        to bottom right,
-        var(--blue-dark),
-        var(--blue-medium),
-        var(--bg-color)
-      );
-    }
-  }
+  background-color: var(--bg-color);
+  color: var(--text-color);
 }
+
+/* Define theme variables */
+body.default-theme {
+  --blue-dark: #1d3557;
+  --blue-medium: #457b9d;
+  --blue-light: #a8dadc;
+  --yellow-accent: #FDBF2D;
+  --yellow-hover: #e0a800;
+  --text-color: white;
+  --bg-color: var(--blue-dark);
+  --gradient-bg: linear-gradient(
+    to bottom right,
+    var(--blue-dark),
+    var(--blue-medium),
+    var(--blue-light)
+  );
+}
+
+body.colorblind-theme {
+  --blue-dark: #333333;
+  --blue-medium: #666666;
+  --blue-light: #999999;
+  --yellow-accent: #ff9900;
+  --yellow-hover: #cc7a00;
+  --text-color: #000;
+  --bg-color: #f3f3f3;
+  /* A visually distinct gradient for colorblind mode */
+  --gradient-bg: linear-gradient(
+    to bottom right,
+    var(--blue-dark),
+    var(--blue-medium),
+    #f3f3f3
+  );
+}
+
 app-login {
   display: block;
   height: 100vh;
   width: 100vw;
 }
 
-body {
-  &.default-theme {
-    --blue-dark: #1d3557;
-    --blue-medium: #457b9d;
-    --blue-light: #a8dadc;
-    --yellow-accent: #FDBF2D;
-    --yellow-hover: #e0a800;
-    --text-color: white;
-    --bg-color: var(--blue-dark);
-  }
-
-  &.colorblind-theme {
-    --blue-dark: #333333;
-    --blue-medium: #666666;
-    --blue-light: #999999;
-    --yellow-accent: #ff9900;
-    --yellow-hover: #cc7a00;
-    --text-color: #000;
-    --bg-color: #f3f3f3;
-  }
-
-@extend .default-theme;
+/* Page container class for all page components except login */
+.page-wrapper {
+  min-height: 100vh;
+  width: 100%;
+  background: var(--gradient-bg);
+  transition: background 0.3s ease;
 }
 
-body {
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  transition: background-color 0.3s ease, color 0.3s ease;
+body.font-family-default {
+  --primary-font: 'Segoe UI', sans-serif;
+}
+
+body.font-family-dyslexic {
+  --primary-font: 'OpenDyslexic', 'Comic Sans MS', sans-serif;
+}
+
+body.font-family-serif {
+  --primary-font: 'Georgia', 'Times New Roman', serif;
+}
+
+body.font-family-monospace {
+  --primary-font: 'Courier New', monospace;
+}
+
+body, button, input, select, textarea {
+  font-family: var(--primary-font);
 }

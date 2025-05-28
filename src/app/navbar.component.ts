@@ -1,43 +1,75 @@
-// navbar.component.ts
+// src/app/navbar.component.ts
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { ThemeService } from './theme.service';
+import { FontFamilyService, FontFamily } from './font-family.service';
+import { ControlCounterService } from './control-counter.service';
 import { Theme } from './theme.enum';
-import {RouterLink} from '@angular/router';
-import {ControlCounterService} from './control-counter.service';
 
 @Component({
   selector: 'app-navbar',
   template: `
     <nav [style.background]="'var(--blue-dark)'">
       <div class="container">
-        <!-- Your navbar content -->
         <div class="theme-switcher">
           <h1 class="logo">flips</h1>
           <div class="nav-links">
             <a routerLink="/home" (click)="onControlClick('Home')">Home</a>
             <a routerLink="/about" (click)="onControlClick('About')">About</a>
-            <button (click)="setTheme(Theme.Default); onControlClick('Default colorscheme')" [class.active]="currentTheme === Theme.Default">
-              Default
-            </button>
-            <button (click)="setTheme(Theme.Colorblind); onControlClick('Colorblind colorscheme')" [class.active]="currentTheme === Theme.Colorblind">
-              Colorblind
-            </button>
+
+            <!-- Theme Buttons -->
+            <div class="control-group">
+              <span class="control-label">Theme:</span>
+              <button (click)="setTheme(Theme.Default); onControlClick('Default colorscheme')"
+                      [class.active]="currentTheme === Theme.Default">
+                Default
+              </button>
+              <button (click)="setTheme(Theme.Colorblind); onControlClick('Colorblind colorscheme')"
+                      [class.active]="currentTheme === Theme.Colorblind">
+                Colorblind
+              </button>
+            </div>
+
+            <!-- Font Family Buttons -->
+            <div class="control-group">
+              <span class="control-label">Font:</span>
+              <button (click)="setFont(FontFamily.Default); onControlClick('Default font')"
+                      [class.active]="currentFont === FontFamily.Default"
+                      aria-label="Default Font">
+                Default
+              </button>
+              <button (click)="setFont(FontFamily.Dyslexic); onControlClick('Dyslexic font')"
+                      [class.active]="currentFont === FontFamily.Dyslexic"
+                      aria-label="Dyslexic-friendly Font">
+                Dyslexic
+              </button>
+              <button (click)="setFont(FontFamily.Serif); onControlClick('Serif font')"
+                      [class.active]="currentFont === FontFamily.Serif"
+                      aria-label="Serif Font">
+                Serif
+              </button>
+            </div>
           </div>
         </div>
       </div>
     </nav>
   `,
+  standalone: true,
+  providers: [
+    ThemeService,
+    FontFamilyService,
+    ControlCounterService
+  ],
   imports: [
-    RouterLink
+    RouterLink,
   ],
   styles: [`
     nav {
-      width: 100vw ;
+      width: 100vw;
       padding: 1rem 2rem;
       height: 70px;
       display: flex;
-      font-family: 'Segoe UI', sans-serif;
-
+      font-family: var(--primary-font);
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
       background-color: var(--blue-dark);
       color: var(--text-color);
@@ -48,7 +80,7 @@ import {ControlCounterService} from './control-counter.service';
       font-weight: bold;
       color: var(--yellow-accent);
       cursor: pointer;
-      align-self: flex-start ;
+      align-self: flex-start;
     }
 
     .nav-links {
@@ -57,7 +89,8 @@ import {ControlCounterService} from './control-counter.service';
       justify-content: flex-end;
       gap: 1.5rem;
       margin-left: auto;
-    margin-right: 2rem;
+      margin-right: 2rem;
+      align-items: center;
 
       a {
         text-decoration: none;
@@ -79,46 +112,72 @@ import {ControlCounterService} from './control-counter.service';
       display: flex;
       gap: 0.5rem;
       justify-content: space-between;
+      width: 100%;
+    }
 
-      button {
-        padding: 0.1rem 1rem;
-        background: var(--blue-medium);
-        color: var(--text-color);
-        border: 2px solid var(--yellow-accent);
-        border-radius: 4px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        font-weight: 500;
+    .control-group {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
 
-        &.active {
-          background: var(--yellow-accent);
-          color: var(--blue-dark);
-          border-color: var(--yellow-accent);
-        }
+    .control-label {
+      color: var(--text-color);
+      font-size: 0.9rem;
+    }
 
-        &:hover {
-          background: var(--yellow-hover);
-          border-color: var(--yellow-hover);
-          color: var(--blue-dark);
-        }
+    button {
+      padding: 0.1rem 1rem;
+      background: var(--blue-medium);
+      color: var(--text-color);
+      border: 2px solid var(--yellow-accent);
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 500;
+
+      &.active {
+        background: var(--yellow-accent);
+        color: var(--blue-dark);
+        border-color: var(--yellow-accent);
+      }
+
+      &:hover {
+        background: var(--yellow-hover);
+        border-color: var(--yellow-hover);
+        color: var(--blue-dark);
       }
     }
   `]
 })
 export class NavbarComponent {
   Theme = Theme;
+  FontFamily = FontFamily;
   currentTheme = Theme.Default;
+  currentFont = FontFamily.Default;
 
-  constructor(private themeService: ThemeService,
-              private counterService: ControlCounterService) {
+  constructor(
+    private themeService: ThemeService,
+    private fontFamilyService: FontFamilyService,
+    private counterService: ControlCounterService
+  ) {
     this.currentTheme = this.themeService.getCurrentTheme() as Theme;
     this.themeService.currentTheme$.subscribe(theme => {
       this.currentTheme = theme as Theme;
+    });
+
+    this.currentFont = this.fontFamilyService.getCurrentFont() as FontFamily;
+    this.fontFamilyService.currentFont$.subscribe(font => {
+      this.currentFont = font as FontFamily;
     });
   }
 
   setTheme(theme: Theme) {
     this.themeService.setTheme(theme);
+  }
+
+  setFont(font: FontFamily) {
+    this.fontFamilyService.setFont(font);
   }
 
   onControlClick(controlId: string) {

@@ -9,7 +9,7 @@
       var(--blue-light)
   );
   color: var(--text-color);
-  font-family: 'Segoe UI', sans-serif;
+  font-family: var(--primary-font);
   background-attachment: fixed;
   transition: all 0.3s ease;
 

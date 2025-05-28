@@ -10,13 +10,13 @@ import {NavbarComponent} from './navbar.component';
       <router-outlet></router-outlet>
     </main>
   `,
+  standalone: true,
   imports: [
     RouterOutlet,
     NavbarComponent
   ],
   styles: [`
     main {
-      padding: 20px;
       background-color: var(--bg-color);
       min-height: 100vh;
     }
